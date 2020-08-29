@@ -1,0 +1,163 @@
+
+
+@mixin mobile {
+  @media (min-width: 0) and (max-width: 700px)  { @content; }
+}
+@mixin mobiletablet {
+  @media (min-width: 0px) and (max-width: 1024px)  { @content; }
+}
+@mixin tablet {
+  @media (min-width: 701px) and (max-width: 1024px)    { @content; }
+}
+@mixin tabletlandscape {
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { @content; }
+}
+@mixin tabletportrait {
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) { @content; }
+}
+@mixin tabletdesktop {
+  @media (min-width: 701px)   { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1025px)   { @content; }
+}
+@mixin desktop-large {
+  @media (min-width: 1200px)   { @content; }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin center-y {
+  position: absolute;
+  top: 50%;
+  @include transform(translate(0%, -50%));
+}
+
+@mixin center-x {
+  position: absolute;
+  left: 50%;
+  @include transform(translate(-50%, 0%));
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin transform-origin ($origin) {
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+@mixin box-shadow($boxtop, $boxleft, $boxblur, $boxradius, $boxcolor) {
+  -webkit-box-shadow: $boxtop $boxleft $boxblur $boxradius $boxcolor;
+  -moz-box-shadow: $boxtop $boxleft $boxblur $boxradius $boxcolor;
+  box-shadow: $boxtop $boxleft $boxblur $boxradius $boxcolor;
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+          eot: "?",
+          svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+          otf: "opentype",
+          ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+

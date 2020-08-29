@@ -1,0 +1,17 @@
+body {
+  background: #F2F2F3;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+}
+
+.full-width {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  padding-left:$unit;
+  padding-right:$unit;
+}
+
+page {
+  min-height: calc(100vh - 138px);
+}

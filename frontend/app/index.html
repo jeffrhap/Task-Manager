@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="@PAGE_LANGUAGE">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Page info, auto filled from .env or .env.development files -->
+    <title>@PAGE_TITLE</title>
+    <meta name="description" content="@PAGE_DESCRIPTION">
+
+    <!-- OG tags, auto filled from .env or .env.development files -->
+    <meta property="og:title" content="@OG_TITLE" />
+    <meta property="og:image" content="@OG_IMAGE" />
+    <meta property="og:description" content="@OG_DESCRIPTION" />
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+</head>
+
+<body>
+
+    <div class="app">
+        @@include('views/home.html')
+    </div>
+
+    <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>
