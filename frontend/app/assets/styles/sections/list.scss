@@ -1,0 +1,36 @@
+section.list {
+    padding: $unit_m 0;
+    .holder {
+        .item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .status {
+                flex-shrink: 0;
+                width: 24px;
+                height: 24px;
+                margin-right: $unit;
+                background-color: #1f8aff;
+                border-radius: 100%;
+            }
+
+            .info {
+                flex-grow: 0;
+                width: 100%;
+                padding: $unit_s 0;
+                border-bottom: 1px solid lightgray;
+
+                .name {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                .description {
+                    font-size: 13px;
+                    color: grey;
+                }
+            }
+        }
+    }
+}

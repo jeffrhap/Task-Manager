@@ -1,0 +1,20 @@
+section.header {
+    padding: $unit_m 0;
+    background-image: url('https://source.unsplash.com/random');
+
+    .holder {
+        .progress {
+            font-size: 15px;
+            color: lightgrey;
+        }
+
+        .title {
+            color: #ffffff;
+        }
+
+        .description {
+            font-size: 13px;
+            color: lightgrey;
+        }
+    }
+}
